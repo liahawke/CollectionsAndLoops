@@ -20,27 +20,10 @@ public class CollectionsAndLoops {
         }
     }
 
-    public void arrayListReversed_1(List<String> origin){
+    public void arrayListReversed(List<String> origin){
         System.out.println("Original list - "+origin);
-        int revSize = origin.size()-1;
-        for (int i = 1; i <= revSize; i++) {
-            origin.add(origin.get(revSize-i));
-        }
-        for (int i = 0; i <=revSize-1; i++) {
-            origin.remove(0);
-        }
+        Collections.reverse(origin);
         System.out.println("Reversed list - "+origin);
-    }
-
-    public void arrayListReversed_2(List<String> ordinary) {
-        System.out.println("Original list - "+ordinary);
-        List<String> reverse = new ArrayList();
-        int revSize = ordinary.size() - 1;
-        for (int i = 0; i < ordinary.size(); i++) {
-            reverse.add(i, ordinary.get(revSize));
-            revSize--;
-        }
-        System.out.println("Reversed list - "+reverse);
     }
 
     public void commonElements (){
@@ -75,12 +58,7 @@ public class CollectionsAndLoops {
             System.out.println("List element - " + linkedlistData.get(i));
         }
         System.out.println("------After---------");
-        myIterator = hashData.iterator();
-        while (myIterator.hasNext()) {
-            if (!linkedlistData.contains(myIterator.next())) {
-                myIterator.remove();
-            }
-        }
+        hashData.retainAll(linkedlistData);
         myIterator = hashData.iterator();
         while (myIterator.hasNext()){
             System.out.println("This is - " + myIterator.next() + " after update");
@@ -93,11 +71,11 @@ public class CollectionsAndLoops {
         ordinary.add("I am vengeance");
         ordinary.add("I am the night");
         ordinary.add("I am Batman");
+        ordinary.add("Bats frighten me");
         ordinary.add("It’s time my enemies shared my dread!");
         el.hashMapCollection();
         System.out.println("---Second task------");
-        //el.arrayListReversed_1(ordinary);
-        el.arrayListReversed_2(ordinary);
+        el.arrayListReversed(ordinary);
         System.out.println("---Third task------");
         el.commonElements();
     }
